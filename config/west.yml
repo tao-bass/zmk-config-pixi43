@@ -3,7 +3,7 @@ manifest:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: keebJP
-      url-base: https://github.com/keebJP/zmk-config-pixi43
+      url-base: https://github.com/keebJP
   projects:
     - name: zmk
       remote: zmkfirmware

@@ -2,7 +2,7 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: kumamuk-git
+    - name: keebJP
       url-base: https://github.com/keebJP/zmk-config-pixi43
   projects:
     - name: zmk

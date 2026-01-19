@@ -62,6 +62,13 @@
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_LAYER_0";
         };
+
+        enter_with_7_to_0: num_to_enter {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp ENTER &to 0>;
+            label = "NUM_TO_ENTER";
+        };
     };
 
     behaviors {
@@ -80,22 +87,13 @@
 
         default_layer {
             bindings = <
-&kp TAB         &kp W         &kp E  &kp R                       &kp T                                                        &kp Y        &kp U  &lt 5 I    &kp O    &kp P
-&kp A           &kp S         &kp D  &kp F                       &kp G        &kp LS(LG(S))                    &kp MINUS      &kp H        &kp J  &kp K      &kp L    &kp MINUS
-&kp Z           &kp X         &kp C  &kp V                       &kp B        &kp COLON                        &kp SEMICOLON  &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LEFT_SHIFT  &kp LEFT_WIN  &kp Q  &lt_to_layer_0 1 BACKSPACE  &lt 2 SPACE  &lt_to_layer_0 3 LANGUAGE_6      &lt 4 DELETE   &lt 6 ENTER                             &lt 5 DELETE
+&kp TAB         &kp W         &kp E  &kp R                       &kp T                                                        &kp Y      &kp U  &lt 5 I    &kp O    &kp P
+&kp A           &kp S         &kp D  &kp F                       &kp G        &kp LS(LG(S))                    &kp MINUS      &kp H      &kp J  &kp K      &kp L    &kp MINUS
+&kp Z           &kp X         &kp C  &kp V                       &kp B        &kp COLON                        &kp SEMICOLON  &kp N      &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LEFT_SHIFT  &kp LEFT_WIN  &kp Q  &lt_to_layer_0 2 BACKSPACE  &lt 6 SPACE  &lt_to_layer_0 3 LANGUAGE_6      &lt 4 DELETE   &kp ENTER                             &to 7
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
-        };
-
-        FUNCTION {
-            bindings = <
-&trans     &kp LG(W)  &kp LG(E)  &trans     &trans                          &kp F1  &kp F2  &kp F3  &kp F4  &kp F5
-&kp LG(A)  &kp LG(S)  &kp LG(D)  &kt LG(F)  &trans     &trans      &kp F13  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
-&kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kt LG(B)  &trans      &trans   &trans  &trans  &trans  &trans  &kp F11
-&trans     &trans     &kp LG(Q)  &trans     &trans     &trans      &trans   &trans                          &kp F12
-            >;
         };
 
         NUM {
@@ -104,6 +102,15 @@
 &kp SLASH                   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))      &kp PERCENT  &kp EXCLAMATION   &kp AT_SIGN        &kp HASH        &kp DOLLAR            &kp MINUS
 &mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL                    &trans       &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LEFT_BRACE  &kp RIGHT_BRACE       &kp BACKSLASH
 &trans                      &trans           &trans           &trans           &trans        &trans                       &trans       &trans                                                                     &kp PIPE
+            >;
+        };
+
+        FUNCTION {
+            bindings = <
+&trans     &kp LG(W)  &kp LG(E)  &trans     &trans                          &kp F1  &kp F2  &kp F3  &kp F4  &kp F5
+&kp LG(A)  &kp LG(S)  &kp LG(D)  &kt LG(F)  &trans     &trans      &kp F13  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
+&kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kt LG(B)  &trans      &trans   &trans  &trans  &trans  &trans  &kp F11
+&trans     &trans     &kp LG(Q)  &trans     &trans     &trans      &trans   &trans                          &kp F12
             >;
         };
 
@@ -142,6 +149,15 @@
 &trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans        &trans        &trans        &trans        &trans
 &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR
 &trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans                                                  &bt BT_CLR_ALL
+            >;
+        };
+
+        num {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                                  &kp STAR  &kp N7  &lt 5 NUMBER_8  &kp N9  &kp MINUS
+&trans  &trans  &trans  &trans  &trans  &trans      &kp DEL             &kp FSLH  &kp N4  &kp N5          &kp N6  &kp PLUS
+&trans  &trans  &trans  &trans  &trans  &trans      &kp DEL             &kp DOT   &kp N1  &kp N2          &kp N3  &kp BSPC
+&trans  &trans  &trans  &trans  &trans  &trans      &enter_with_7_to_0  &kp N0                                    &to 0
             >;
         };
     };

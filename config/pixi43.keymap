@@ -29,7 +29,7 @@
         };
 
         muhennkann {
-            bindings = <&to_layer_0 LANG2>; // 無変換位置もLANG2(英数)へ
+            bindings = <&ime_off>; // マクロを直接指定
             key-positions = <0 1>;
         };
 
@@ -45,37 +45,56 @@
     };
 
     macros {
-        // --- LANG1/2 ベースのマクロ群 ---
+        // --- OSの設定（JIS/US）を問わず「かな/英数」を機能させるための定義 ---
+        
+        // 英数入力に固定 (JISキーボードの「英数」キーコード)
+        ime_off: ime_off {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp LANG2>; 
+            label = "IME_OFF_LANG2";
+        };
 
-        // 1回タップ: IME ON (LANG1) + Win_layer(0)
+        // 日本語入力に固定 (JISキーボードの「かな」キーコード)
+        ime_on: ime_on {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp LANG1>;
+            label = "IME_ON_LANG1";
+        };
+
+        // 1回タップ: IME ON + Win_layer(0)
         ime_on_l0: ime_on_l0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LANG1 &to 0>;
+            bindings = <&ime_on &to 0>;
             label = "IME_ON_L0";
         };
 
-        // 2回タップ: IME OFF (LANG2) + NUM(1)
+        // 2回タップ: IME OFF + NUM(1)
         ime_off_l1: ime_off_l1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LANG2 &to 1>;
+            bindings = <&ime_off &to 1>;
             label = "IME_OFF_L1";
         };
 
-        // 3回タップ: IME OFF (LANG2) + Win_layer(0)
+        // 3回タップ: IME OFF + Win_layer(0)
         ime_off_l0: ime_off_l0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LANG2 &to 0>;
+            bindings = <&ime_off &to 0>;
             label = "IME_OFF_L0";
         };
 
-        // 元々の機能維持用マクロ
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp LANG2>; // INT_MUHENKANをLANG2へ
+            bindings = <&to 0 &ime_off>;
             label = "TO_LAYER_0";
         };
 
@@ -96,7 +115,6 @@
             tapping-term-ms = <200>;
         };
 
-        // タップ回数による制御（Tap-Dance）
         td_ime_layer: td_ime_layer {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_IME_LAYER";
@@ -112,7 +130,7 @@
         Win_layer {
             bindings = <
 &kp TAB         &kp W         &kp E         &kp R                       &kp T                                                               &kp Y        &kp U    &lt 5 I    &kp O    &kp P
-&kp A           &kp S         &kp D         &kp F                       &kp G        &kp LS(LG(S))           &kp LANG2                      &kp H        &kp J    &kp K      &kp L    &kp MINUS
+&kp A           &kp S         &kp D         &kp F                       &kp G        &kp LS(LG(S))           &ime_off                       &kp H        &kp J    &kp K      &kp L    &kp MINUS
 &kp Z           &kp X         &kp C         &kp V                       &kp B        &kp Q                   &kp GRAVE                      &kp N        &lt 6 M  &kp COMMA  &kp DOT  &kp SLASH
 &kp LEFT_SHIFT  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 2 BACKSPACE  &lt 6 SPACE  &lt_to_layer_0 3 LANG6  &td_ime_layer                  &lt 5 ENTER                               &to 1
             >;

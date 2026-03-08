@@ -71,11 +71,25 @@
             label = "NUM_TO_ENTER";
         };
 
-        Win_layer_Hiragana: Win_layer_Hiragana {
+        Win_layer_Henkan: Win_layer_Hiragana {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none>;
+            bindings = <&kp INT_HENKAN &mo 0>;
             label = "WIN_LAYER_HIRAGANA";
+        };
+
+        Win_layer_Muhenkan: Win_layer_Muhenkan {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp INT_MUHENKAN &mo 0>;
+            label = "WIN_LAYER_MUHENKAN";
+        };
+
+        NUM_Muhenkan: NUM_Muhenkan {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp INT_MUHENKAN &mo 1>;
+            label = "NUM_MUHENKAN";
         };
     };
 
@@ -88,6 +102,18 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        Henkan_Muhenkan: Henkan_Muhenkan {
+            compatible = "zmk,behavior-tap-dance";
+            label = "HENKAN_MUHENKAN";
+            #binding-cells = <0>;
+            bindings =
+                <&Win_layer_Henkan>,
+                <&NUM_Muhenkan>,
+                <&Win_layer_Muhenkan>;
+
+            tapping-term-ms = <250>;
+        };
     };
 
     keymap {
@@ -95,10 +121,10 @@
 
         Win_layer {
             bindings = <
-&kp TAB         &kp W         &kp E         &kp R                       &kp T                                                                                &kp Y        &kp U    &lt 5 I    &kp O    &kp P
-&kp A           &kp S         &kp D         &kp F                       &kp G        &kp LS(LG(S))                    &kp INT_MUHENKAN                       &kp H        &kp J    &kp K      &kp L    &kp MINUS
-&kp Z           &kp X         &kp C         &kp V                       &kp B        &kp Q                            &kp GRAVE                              &kp N        &lt 6 M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LEFT_SHIFT  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 2 BACKSPACE  &lt 6 SPACE  &lt_to_layer_0 3 LANGUAGE_6      &mt RIGHT_CONTROL LANG_ZENKAKUHANKAKU  &lt 5 ENTER                               &to 1
+&kp TAB         &kp W         &kp E         &kp R                       &kp T                                                           &kp Y        &kp U    &lt 5 I    &kp O    &kp P
+&kp A           &kp S         &kp D         &kp F                       &kp G        &kp LS(LG(S))                    &kp INT_MUHENKAN  &kp H        &kp J    &kp K      &kp L    &kp MINUS
+&kp Z           &kp X         &kp C         &kp V                       &kp B        &kp Q                            &kp GRAVE         &kp N        &lt 6 M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LEFT_SHIFT  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 2 BACKSPACE  &lt 6 SPACE  &lt_to_layer_0 3 LANGUAGE_6      &Henkan_Muhenkan  &lt 5 ENTER                               &to 1
             >;
 
             sensor-bindings = <&inc_dec_kp PAGE_UP PAGE_DOWN>;

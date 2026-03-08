@@ -159,7 +159,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans                      &trans  &kp LESS_THAN         &kp GREATER_THAN       &trans           &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp EXCLAMATION  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp EXCLAMATION  &kp EXCLAMATION
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                                                &trans
             >;
         };

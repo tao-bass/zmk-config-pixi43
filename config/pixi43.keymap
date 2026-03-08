@@ -67,7 +67,7 @@
         enter_and_to_0: num_to_enter {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp ENTER &to 0 &kp INTERNATIONAL_4>;
+            bindings = <&kp ENTER &to 0>;
             label = "NUM_TO_ENTER";
         };
     };

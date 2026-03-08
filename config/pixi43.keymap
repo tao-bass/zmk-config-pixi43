@@ -112,7 +112,7 @@
                 <&NUM_Muhenkan>,
                 <&Win_layer_Muhenkan>;
 
-            tapping-term-ms = <250>;
+            tapping-term-ms = <300>;
         };
     };
 

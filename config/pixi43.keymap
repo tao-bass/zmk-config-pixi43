@@ -70,13 +70,6 @@
             bindings = <&kp ENTER &to 0 &kp INTERNATIONAL_4>;
             label = "NUM_TO_ENTER";
         };
-
-        Hiragana: Hiragana {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none>;
-            label = "HIRAGANA";
-        };
     };
 
     behaviors {

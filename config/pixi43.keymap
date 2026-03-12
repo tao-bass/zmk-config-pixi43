@@ -74,21 +74,21 @@
         Win_layer_Henkan: Win_layer_Hiragana {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp INT_HENKAN &mo 0>;
+            bindings = <&kp INT_HENKAN &to 0>;
             label = "WIN_LAYER_HIRAGANA";
         };
 
         Win_layer_Muhenkan: Win_layer_Muhenkan {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp INT_MUHENKAN &mo 0>;
+            bindings = <&kp INT_MUHENKAN &to 0>;
             label = "WIN_LAYER_MUHENKAN";
         };
 
         NUM_Muhenkan: NUM_Muhenkan {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp INT_MUHENKAN &mo 1>;
+            bindings = <&kp INT_MUHENKAN &to 1>;
             label = "NUM_MUHENKAN";
         };
     };

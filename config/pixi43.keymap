@@ -87,15 +87,6 @@
     };
 
     behaviors {
-        lt_to_layer_0: lt_to_layer_0 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_TO_0";
-            bindings = <&mo>, <&to_layer_0>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-        };
-
         Behavior_Henkan_Muhenkan: Behavior_Henkan_Muhenkan {
             compatible = "zmk,behavior-tap-dance";
             label = "BEHAVIOR_HENKAN_MUHENKAN";
@@ -114,10 +105,10 @@
 
         Win_layer {
             bindings = <
-&kp TAB         &kp W         &kp E         &kp R                       &kp T                                                                    &kp Y        &kp U    &lt 5 I    &kp O    &kp P
-&kp A           &kp S         &kp D         &kp F                       &kp G        &kp LS(LG(S))                    &kp INT_MUHENKAN           &kp H        &kp J    &kp K      &kp L    &kp MINUS
-&kp Z           &kp X         &kp C         &kp V                       &kp B        &kp Q                            &kp GRAVE                  &kp N        &lt 6 M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LEFT_SHIFT  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 2 BACKSPACE  &lt 6 SPACE  &lt_to_layer_0 3 LANGUAGE_6      &Behavior_Henkan_Muhenkan  &lt 5 ENTER                               &to 1
+&kp TAB         &kp W         &kp E         &kp R  &kp T                                                      &kp Y        &kp U    &lt 5 I    &kp O    &kp P
+&kp A           &kp S         &kp D         &kp F  &kp G        &kp LS(LG(S))      &kp INT_MUHENKAN           &kp H        &kp J    &kp K      &kp L    &kp MINUS
+&kp Z           &kp X         &kp C         &kp V  &kp B        &kp Q              &kp GRAVE                  &kp N        &lt 6 M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LEFT_SHIFT  &kp LEFT_WIN  &kp LEFT_ALT  &none  &lt 6 SPACE  &none              &Behavior_Henkan_Muhenkan  &lt 5 ENTER                               &to 1
             >;
 
             sensor-bindings =

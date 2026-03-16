@@ -41,7 +41,7 @@
         };
 
         muhennkann {
-            bindings = <&to_layer_0 INT_MUHENKAN>;
+            bindings = <&Macro_to_layer_0 INT_MUHENKAN>;
             key-positions = <0 1>;
         };
 
@@ -57,47 +57,54 @@
     };
 
     macros {
-        to_layer_0: to_layer_0 {
+        Macro_to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&to 2 &kp INT_MUHENKAN>;
             label = "TO_LAYER_0";
         };
 
-        enter_and_to_0: num_to_enter {
+        Macro_enter_and_to_0: num_to_enter {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp ENTER &to 0 &kp INTERNATIONAL_4>;
             label = "NUM_TO_ENTER";
         };
 
-        Win_layer_Henkan: Win_layer_Hiragana {
+        Macro_Win_layer_Henkan: Win_layer_Hiragana {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&to 0 &kp INT_HENKAN>;
             label = "WIN_LAYER_HIRAGANA";
         };
 
-        Win_layer_Muhenkan: Win_layer_Muhenkan {
+        Macro_Win_layer_Muhenkan: Macro_Win_layer_Muhenkan {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&to 0 &kp INT_MUHENKAN>;
-            label = "WIN_LAYER_MUHENKAN";
+            label = "MACRO_WIN_LAYER_MUHENKAN";
         };
 
-        NUM_Muhenkan: NUM_Muhenkan {
+        Macro_NUM_Muhenkan: NUM_Muhenkan {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&to 1 &kp INT_MUHENKAN>;
             label = "NUM_MUHENKAN";
         };
+
+        Macro_DPC: Macro_DPC {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN &mmv MOVE_DOWN>;
+            label = "MACRO_DPC";
+        };
     };
 
     behaviors {
-        lt_to_layer_0: lt_to_layer_0 {
+        Behavior_lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
-            bindings = <&mo>, <&to_layer_0>;
+            bindings = <&mo>, <&Macro_to_layer_0>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -115,9 +122,9 @@
             label = "BEHAVIOR_HENKAN_MUHENKAN";
             #binding-cells = <0>;
             bindings =
-                <&Win_layer_Henkan>,
-                <&NUM_Muhenkan>,
-                <&Win_layer_Muhenkan>;
+                <&Macro_Win_layer_Henkan>,
+                <&Macro_NUM_Muhenkan>,
+                <&Macro_Win_layer_Muhenkan>;
 
             tapping-term-ms = <300>;
         };
@@ -128,21 +135,21 @@
 
         Win_layer {
             bindings = <
-&kp TAB         &kp W         &kp E         &kp R                       &kp T                                                                    &kp Y        &kp U    &lt 5 I    &kp O    &kp P
-&kp A           &kp S         &kp D         &kp F                       &kp G        &kp LS(LG(S))                    &kp INT_MUHENKAN           &kp H        &kp J    &kp K      &kp L    &kp MINUS
-&kp Z           &kp X         &kp C         &kp V                       &kp B        &kp Q                            &kp GRAVE                  &kp N        &lt 6 M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LEFT_SHIFT  &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 2 BACKSPACE  &lt 6 SPACE  &lt_to_layer_0 3 LANGUAGE_6      &Behavior_Henkan_Muhenkan  &lt 5 ENTER                               &to 1
+&kp TAB         &kp W         &kp E         &kp R                                &kp T                                                                             &kp Y        &kp U    &lt 5 I    &kp O    &kp P
+&kp A           &kp S         &kp D         &kp F                                &kp G        &kp LS(LG(S))                             &kp INT_MUHENKAN           &kp H        &kp J    &kp K      &kp L    &kp MINUS
+&kp Z           &kp X         &kp C         &kp V                                &kp B        &kp Q                                     &kp GRAVE                  &kp N        &lt 6 M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LEFT_SHIFT  &kp LEFT_WIN  &kp LEFT_ALT  &Behavior_lt_to_layer_0 2 BACKSPACE  &lt 6 SPACE  &Behavior_lt_to_layer_0 3 LANGUAGE_6      &Behavior_Henkan_Muhenkan  &lt 5 ENTER                               &to 1
             >;
 
-            sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
+            sensor-bindings = <&scroll_up_down>;
         };
 
         NUM {
             bindings = <
-&kp F9                      &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS                                                    &mt KP_NUMBER_9 ASTRK  &kp KP_NUMBER_7  &lt 5 KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_EQUAL
-&kp SLASH                   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))      &kp MINUS        &kp SLASH              &kp KP_NUMBER_4  &kp KP_NUMBER_5    &kp KP_NUMBER_6  &kp BACKSPACE
-&mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL                    &kp PLUS         &kp KP_NUMBER_0        &kp KP_NUMBER_1  &kp KP_NUMBER_2    &kp KP_NUMBER_3  &kp PERIOD
-&trans                      &trans           &trans           &trans           &kp ENTER     &trans                       &enter_and_to_0  &lt 5 ENTER                                                                 &to 0
+&kp F9                      &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS                                                          &mt KP_NUMBER_9 ASTRK  &kp KP_NUMBER_7  &lt 5 KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_EQUAL
+&kp SLASH                   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))      &kp MINUS              &kp SLASH              &kp KP_NUMBER_4  &kp KP_NUMBER_5    &kp KP_NUMBER_6  &kp BACKSPACE
+&mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL                    &kp PLUS               &kp KP_NUMBER_0        &kp KP_NUMBER_1  &kp KP_NUMBER_2    &kp KP_NUMBER_3  &kp PERIOD
+&trans                      &trans           &trans           &trans           &kp ENTER     &trans                       &Macro_enter_and_to_0  &lt 5 ENTER                                                                 &to 0
             >;
 
             sensor-bindings = <&inc_dec_kp 0 0>;

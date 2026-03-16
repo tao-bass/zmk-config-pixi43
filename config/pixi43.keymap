@@ -135,10 +135,10 @@
 
         Win_layer {
             bindings = <
-&kp TAB         &kp W         &kp E         &kp R                                &kp T                                                                             &kp Y        &kp U    &lt 5 I    &kp O    &kp P
-&kp A           &kp S         &kp D         &kp F                                &kp G        &kp LS(LG(S))                             &kp INT_MUHENKAN           &kp H        &kp J    &kp K      &kp L    &kp MINUS
-&kp Z           &kp X         &kp C         &kp V                                &kp B        &kp Q                                     &kp GRAVE                  &kp N        &lt 6 M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LEFT_SHIFT  &kp LEFT_WIN  &kp LEFT_ALT  &Behavior_lt_to_layer_0 2 BACKSPACE  &lt 6 SPACE  &Behavior_lt_to_layer_0 3 LANGUAGE_6      &Behavior_Henkan_Muhenkan  &lt 5 ENTER                               &to 1
+&kp TAB         &kp W         &kp E         &kp R            &kp T                                                                             &kp Y        &kp U    &lt 5 I    &kp O    &kp P
+&kp A           &kp S         &kp D         &kp F            &kp G        &kp LS(LG(S))                             &kp INT_MUHENKAN           &kp H        &kp J    &kp K      &kp L    &kp MINUS
+&kp Z           &kp X         &kp C         &kp V            &kp B        &kp Q                                     &kp GRAVE                  &kp N        &lt 6 M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LEFT_SHIFT  &kp LEFT_WIN  &kp LEFT_ALT  &lt 2 BACKSPACE  &lt 6 SPACE  &Behavior_lt_to_layer_0 3 LANGUAGE_6      &Behavior_Henkan_Muhenkan  &lt 5 ENTER                               &to 1
             >;
 
             sensor-bindings = <&scroll_up_down>;

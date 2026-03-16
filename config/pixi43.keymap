@@ -91,13 +91,6 @@
             bindings = <&to 1 &kp INT_MUHENKAN>;
             label = "NUM_MUHENKAN";
         };
-
-        Macro_DPC: Macro_DPC {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&msc SCRL_DOWN &mmv MOVE_DOWN>;
-            label = "MACRO_DPC";
-        };
     };
 
     behaviors {
@@ -141,7 +134,7 @@
 &kp LEFT_SHIFT  &kp LEFT_WIN  &kp LEFT_ALT  &lt 2 BACKSPACE  &lt 6 SPACE  &Behavior_lt_to_layer_0 3 LANGUAGE_6      &Behavior_Henkan_Muhenkan  &lt 5 ENTER                               &to 1
             >;
 
-            sensor-bindings = <&scroll_up_down>;
+            sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
         };
 
         NUM {

@@ -12,7 +12,7 @@
         transform = <&default_transform>;
         kscan = <&kscan0>;
 
-        keys
+        keys  //                     w   h    x    y     rot    rx    ry
             = <&key_physical_attrs 100 100    0   37       0     0     0>
             , <&key_physical_attrs 100 100  100   12       0     0     0>
             , <&key_physical_attrs 100 100  200    0       0     0     0>
@@ -93,11 +93,10 @@
 
     left_encoder: encoder_left {
         compatible = "alps,ec11";
-        a-gpios = <&xiao_d 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&xiao_d 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        // 【修正】一般的なエンコーダのクリック数に合わせて値を調整
-        steps = <80>; 
-        status = "okay"; // 【修正】disabledからokayに変更
+        a-gpios = <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <12>;
+        status = "okay"; // ★ "disabled" から "okay" に修正
     };
 
     right_encoder: encoder_right {
@@ -106,9 +105,8 @@
 
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder>; // 右がdisabledなら左だけに絞るのが安全
-        // 【修正】1回転あたりのトリガー数を増やして誤作動（チャタリング）を抑制
-        triggers-per-rotation = <20>; 
+        sensors = <&left_encoder>; // ★ &right_encoder を削除して左だけ有効化
+        triggers-per-rotation = <10>;
     };
 
     trackball_listener: trackball_listener {
